@@ -14,11 +14,11 @@ class Question(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
     likes = models.ManyToManyField(User, related_name='question_like_user')
-    author = models.CharField(max_length=255)
+    author = models.ForeignKey(User)
 
 class Answer(models.Model):
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
-    author = models.CharField(max_length=255)
+    author = models.ForeignKey(User)
     question = models.OneToOneField(Question)
     
